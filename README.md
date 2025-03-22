@@ -12,23 +12,6 @@ This project is designed to implement a secure REST API for a banking system usi
 - **Spring Security**: For securing the application with roles and authentication.
 - **Maven**: For dependency management.
 
-## Getting Started
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/baharkyc/FSWEB-S19D3-Maven.git
-   ```
-
-2. **Open in IntelliJ IDEA** (or any other IDE of your choice).
-
-3. **Install dependencies** using Maven:
-   ```bash
-   mvn install
-   ```
-
-4. **Run the application**:
-   The application will run on port 9000 by default.
-
 ## Configuration
 
 - **Database Schema**: A schema named `bank` should be created, where all database tables will be defined.
