@@ -1,62 +1,48 @@
-#  Java Spring REST API
+# Java Spring REST API with Security
 
-### Proje Kurulumu
-Projeyi öncelikle forklayın ve clone edin.
-Daha sonra projeyi IntellijIDEA kullanarak açınız. README.md dosyasını dikkatli bir şekilde okuyarak istenenleri yapmaya çalışın.
-Proje sayımız ilerledikçe proje yönetimimizi kolaylaştırmak adına projelerimizi belli klasör kalıplarında saklamak işimizi kolaylaştırmak adına iyi bir alışkanlıktır.
-Örnek bir Lokasyon: Workintech/Sprint_1/Etud.
+This project is designed to implement a secure REST API for a banking system using **Spring Boot** and **Spring Security**.
 
-### Hedeflerimiz:
+## Features
+- **Secure REST API**: Implemented using Spring Boot and Spring Security.
+- **JDBC Authentication**: User authentication via database using Spring Security.
+- **Role-based Authorization**: Users can have different roles such as ADMIN or USER.
 
-### Secure Rest Api
+## Technologies Used
+- **Spring Boot**: For building the REST API.
+- **Spring Security**: For securing the application with roles and authentication.
+- **Maven**: For dependency management.
 
- ### Başlangıç
- * Proje içerisinde ```Spring Web```, ```Spring Boot Security``` dependency mutlaka olmalı.
- * Maven dependency management sistemini kullanarak tüm dependencyleri install edin.
- * Uygulamanızı  ```9000``` portundan ayağa kaldırın.
- * Bir banka için rest api dizayn etmeniz istenmektedir.
- * schema olarak ```bank``` isminde bir schema oluşturun ve tüm veritabanı tablolarınızı bu schema içerisinde tanımlayın.
+## Getting Started
 
-### Amaç
- * Spring Boot Security ile yapılabilen security türlerini tanımak ve uygulamak
- 
- ### Görev 1
- * main metodunuzun olduğu paket altında ```controller```, ```config```, ```entity```, ```dao```, ```service``` isminde 5 adet daha paket oluşturunuz.
- * Project Lombok'u dependency olarak uygulamanıza ekleyin.
- * ```entity``` paketinin altına JDBCAuthentication için ```Member``` adında bir sınıf tanımlayınız. İçerisinde instance variable olarak ```id, email, password``` isminde 3 tane değişken oluşturun.
- * ```entity``` paketinin altına JDBCAuthentication için ```Role``` adında bir sınıf oluşturunuz içerisine ```id, authority``` adında 2 field ekleyiniz.
- * Member ve Role arasında many-to-many bir ilişki tanımlamalısınız.
- * ```entity``` paketinin altına JDBCAuthentication için ```Account``` adında bir sınıf tanımlayınız. İçerisinde instance variable olarak ```id, name``` isminde 2 tane değişken oluşturun.
- * ```dao``` paketinin altına ```MemberRepository``` adinda bir interface tanımlayınız. İçerisinde emaile göre kullanıcıları almalı.
- * Lombok ve JPA annotation larını uygulayarak bütün sınıfı bir veritabanı tablosu olucak şekilde işaretleyiniz.
- * ```application.properties``` dosyanızı kullanarak veritabanı bağlantınızı kurun.
- * Spring uygulamasının veritabanı loglarını açarak veritabanına yolladığınız her sorguyu inceleyin.
- * dto paketi altında ```RegisterResponse``` ve ```RegistrationMember``` adında 2 tane record tanımlayın.
- * ```RegisterResponse``` AuthController sınıfında register metodunun dönüş tipi olmalıdır. 
- * ```RegistrationMember``` AuthController sınıfında register metodunun parametresinin tipi olmalıdır.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/baharkyc/FSWEB-S19D3-Maven.git
+   ```
 
-### Görev 2
- * Service ve Dao paketi katmanlarını yazmalısınız. 
- * Account objesi MVC kurallarına uygun olarak veritabanı işlemlerini yapabilmeli.
- * CRUD işlemlerini Service katmanı karşılayabilmeli
+2. **Open in IntelliJ IDEA** (or any other IDE of your choice).
 
- ### Görev 3
- * ```controller``` paketi altında ```AccountController, AuthController``` adında 2 tane controller yazmalısınız.
- * AccountService sınıfını AccountController sınıfı altında ```Dependency Injection``` yöntemini kullanarak çağırınız.
- * İlk olarak Member kaydebilmek için [POST]/workintech/auth/register şeklinde bir endpoint tanımlayın ve buradan bir adet user rolünde bir adet admin rolünde kullanıcı tanımlayın.
- * Amacımız CRUD işlemlerini tanımlayan endpointler yazmak.
- * [GET]/workintech/accounts/ => tüm account listini dönmeli.
- * [GET]/workintech/accounts/{id} => İlgili id deki account objesini dönmeli. 
- * [POST]/workintech/accounts => Bir adet account objesini veritabanına kaydeder.
- * [PUT]/workintech/accounts/{id} => İlgili id deki account objesinin değerlerini yeni gelen data ile değiştirir.
- * [DELETE]/workintech/accounts/{id} => İlgili id değerindeki account objesini veritabanından siler.
- 
+3. **Install dependencies** using Maven:
+   ```bash
+   mvn install
+   ```
 
-### Görev 4
- * ```application.properties``` dosyasına kendi kullanıcı isminizi ve şifrenizi giriniz.
- * Basic auth yöntemini kullanarak sistemdeki tüm endpointlere ulaşmayı deneyiniz.
- * JDBCAuthentication yöntemi ile  tüm endpointlere ulaşmayı deneyiniz. 
- * [POST]/workintech/auth/register => member tablosunda yeni bir kullanıcı oluşturmalı.
- * [GET] requestlerine ```user ve admin``` rolündeki kullanıcılar request atabilmeli.
- * [POST], [PUT], [DELETE] requestlerine sadece ```admin``` rolündeki kullanıcılar request atabilir.
- * OAuth2 yöntemini kullanarak Github ile uygulamanızdaki [GET]endpointlerine ulaşmayı deneyiniz.
+4. **Run the application**:
+   The application will run on port 9000 by default.
+
+## Configuration
+
+- **Database Schema**: A schema named `bank` should be created, where all database tables will be defined.
+
+## Project Structure
+- `controller`: Contains the API endpoints.
+- `config`: Security configuration and other settings.
+- `entity`: Contains the data models (e.g., `Member`, `Role`, `Account`).
+- `dao`: Repository interfaces for data access.
+- `service`: Business logic for handling data operations.
+
+## Tasks
+
+1. Set up Spring Security and configure role-based access.
+2. Implement JDBC Authentication for the user (`Member` class).
+3. Create repositories for user management.
+4. Implement DTOs for registration (`RegisterResponse` and `RegistrationMember`).
